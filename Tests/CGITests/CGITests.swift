@@ -20,6 +20,19 @@ class CGITests: XCTestCase {
 		)
 	}
 	
+	func testRedirect() {
+		let cgi = CGI()
+		cgi.statusCode = .MovedPermanently_301
+		cgi.text = "abcd"
+		cgi.serverName = "abc"
+		cgi.addHeader("Location", value: "12345")
+		
+		XCTAssertEqual(
+			cgi.render(),
+			"Status: 301\nContent-type: text/plain\nContent-Length: 4\nServer: abc\nLocation: 12345\n\nabcd\n"
+		)
+	}
+	
 	static var allTests = [
 		("testBasicResponse", testBasicResponse),
 	]

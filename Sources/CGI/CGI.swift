@@ -5,11 +5,12 @@
 
 import Foundation
 
-public class CGI {
-	public var statusCode: StatusCode = .OK_200
-	public var contentType: ContentType = .Text
-	public var serverName: String = "SwiftScripting/Bootstrap (David Skrundz)"
-	public var text: String = ""
+public final class CGI {
+	public var statusCode = StatusCode.OK_200
+	public var contentType = ContentType.Text
+	public var serverName = "SwiftScripting/Bootstrap (David Skrundz)"
+	public var text = ""
+	public var headerEntries = [String : String]()
 	
 	public let environmentVariables: [String : String]
 	public let requestBody: String
@@ -111,12 +112,19 @@ extension CGI {
 		self.append("\n")
 	}
 	
+	public func addHeader(_ key: String, value: String) {
+		self.headerEntries[key] = value
+	}
+	
 	public func render() -> String {
 		var string = ""
 		string += "Status: \(self.statusCode)"              + "\n"
 		string += "Content-type: \(self.contentType)"       + "\n"
 		string += "Content-Length: \(self.text.utf8.count)" + "\n"
 		string += "Server: \(self.serverName)"              + "\n"
+		self.headerEntries.forEach {
+			string += "\($0.key): \($0.value)"              + "\n"
+		}
 		string += ""                                        + "\n"
 		string += self.text                                 + "\n"
 		return string
