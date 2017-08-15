@@ -35,5 +35,6 @@ class CGITests: XCTestCase {
 	
 	static var allTests = [
 		("testBasicResponse", testBasicResponse),
+		("testRedirect", testRedirect),
 	]
 }
