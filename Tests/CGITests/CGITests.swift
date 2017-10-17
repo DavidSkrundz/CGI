@@ -3,8 +3,8 @@
 //  CGI
 //
 
-@testable import CGI
 import XCTest
+import CGI
 
 class CGITests: XCTestCase {
 	func testBasicResponse() {
