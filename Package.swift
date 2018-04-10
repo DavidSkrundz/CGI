@@ -1,4 +1,4 @@
-// swift-tools-version:4.0
+// swift-tools-version:4.1
 //
 //  Package.swift
 //  CGI
@@ -11,10 +11,13 @@ let package = Package(
 	products: [
 		.library(
 			name: "CGI",
+			targets: ["CGI"]),
+		.library(
+			name: "sCGI",
 			type: .static,
 			targets: ["CGI"]),
 		.library(
-			name: "CGI",
+			name: "dCGI",
 			type: .dynamic,
 			targets: ["CGI"])
 	],

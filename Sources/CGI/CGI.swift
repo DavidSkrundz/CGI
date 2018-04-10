@@ -26,21 +26,21 @@ public final class CGI {
 		
 		switch method {
 			case .Get,
-			     .Copy,
-			     .Head,
-			     .Purge,
-			     .Unlock:
+				 .Copy,
+				 .Head,
+				 .Purge,
+				 .Unlock:
 				self.requestBody = ""
 			case .Post,
-			     .Put,
-			     .Patch,
-			     .Delete,
-			     .Options,
-			     .Link,
-			     .Unlink,
-			     .Lock,
-			     .Propfind,
-			     .View:
+				 .Put,
+				 .Patch,
+				 .Delete,
+				 .Options,
+				 .Link,
+				 .Unlink,
+				 .Lock,
+				 .Propfind,
+				 .View:
 				self.requestBody = {
 					var input = ""
 					while let inputLine = readLine() {
