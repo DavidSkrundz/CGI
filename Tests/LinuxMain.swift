@@ -3,9 +3,9 @@
 //  CGI
 //
 
-@testable import CGITests
-import XCTest
+#if os(Linux)
+import SwiftGlibc.C.stdlib
+#endif
 
-XCTMain([
-	testCase(CGITests.allTests),
-])
+print("Run the tests with `swift test --enable-test-discovery`.")
+exit(1)

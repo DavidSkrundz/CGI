@@ -32,9 +32,4 @@ class CGITests: XCTestCase {
 			"Status: 301\nContent-type: text/plain\nContent-Length: 4\nServer: abc\nLocation: 12345\n\nabcd\n"
 		)
 	}
-	
-	static var allTests = [
-		("testBasicResponse", testBasicResponse),
-		("testRedirect", testRedirect),
-	]
 }
